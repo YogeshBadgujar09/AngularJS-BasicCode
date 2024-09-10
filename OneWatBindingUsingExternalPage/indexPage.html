@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="indexPage">
+<head> 
+    <title>Index Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var myVar = angular.module("indexPage",[]);
+        myVar.controller('demoCtrl',function($scope){
+            $scope.name = "Yogesh";
+            $scope.age = 18;
+            $scope.class ="TyBCA";
+        });
+
+    </script>
+</head>
+<body>
+    <div ng-controller="demoCtrl">
+        <div ng-include="externalPage.html">
+            
+        </div>
+    </div>
+</body>
+</html>
