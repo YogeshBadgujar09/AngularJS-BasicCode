@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="oneWayBinding">
+<head> 
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script>
+            var myModule = angular.module("oneWayBinding",[]);
+            myModule.controller('myController',function($scope){
+                
+                $scope.name = "Yogesh";
+                $scope.age = 18;
+                $scope.class = "TYBCA";
+            });
+        </script>
+</head>
+<body>
+        <div ng-controller="myController" >
+            <p> Name : {{name}}</p>
+            <p> Age : {{age}}</p>
+            <p> Class : {{class}}</p>
+        </div>
+</body>
+</html>
