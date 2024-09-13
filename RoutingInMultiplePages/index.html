@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="routingPages">
+<head> 
+    <title>Routing Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+    
+    <script>
+            var myModel = angular.module("routingPages",["ngRoute"]);
+
+            myModel.config(function($routeProvider){
+
+                $routeProvider
+                            .when("/home",{
+                                templateUrl : "homePage.html",
+                                controller : "ctrlPage"                             
+                            })
+                            .when("/login",{
+                                templateUrl : "loginPage.html",
+                                controller : "ctrlPage" 
+                            })
+                            .when("/contact",{
+                                templateUrl : "contactPage.html",
+                                controller : "ctrlPage" 
+                            })
+                            .otherwise("/",{
+                                templateUrl : "index.html",
+                                controller : "ctrlPage" 
+                            })
+
+            });
+
+            myModel.controller("ctrlPage",function(){
+
+            });
+
+    </script>
+</head>
+<body>
+    <div ng-controller="ctrlPage">
+         <a href="#!/home">Home</a>
+         <a href="#!/login">Login</a>
+         <a href="#!/contact">Contact</a>
+    </div>
+
+    <div ng-view></div>
+</body>
+</html>
