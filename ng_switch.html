@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+
+      angular.module('myApp', [])
+      .controller('MyController', ['$scope', function($scope) {
+        $scope.userType = 'user';
+      }]);
+
+      <div ng-switch="userType">
+        <div ng-switch-when="admin">Welcome, Admin!</div>
+        <div ng-switch-when="moderator">Welcome, Moderator!</div>
+        <div ng-switch-when="user">Welcome, User!</div>
+        <div ng-switch-default>Invalid user type</div>
+      </div> 
+  
+
+
+    </script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div ng-controller="MyController">
+       
+        <select ng-model="userType">
+          <option value="admin">Admin</option>
+          <option value="moderator">Moderator</option>
+          <option value="user">User</option>
+        </select>
+
+      </div>
+
+   
+    
+</body>
+</html>
