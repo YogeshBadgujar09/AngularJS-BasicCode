@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="ngIfDemo_Yogesh">
+<head> 
+    <title>ngIf Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var myVar = angular.module("ngIfDemo_Yogesh",[]);
+        myVar.controller("myCtrl",function($scope){
+
+            $scope.visibilityStatus = false;
+            $scope.visibleOperation = function(){
+                    $scope.visibilityStatus = !$scope.visibilityStatus;
+            };
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+         <p ng-If="visibilityStatus">Hide this sentence</p><br>
+         <button ng-click="visibleOperation()">Click me</button>
+    </div>
+</body>
+</html>
