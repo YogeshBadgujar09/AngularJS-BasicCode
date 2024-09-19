@@ -1,0 +1,40 @@
+<html ng-app="httpService_Yogesh">
+<head>
+    <title>http service</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+    <script>
+            var myVar = angular.module("httpService_Yogesh",[]);
+            myVar.controller("myCtrl",function($scope ,$http){
+
+                $scope.multiData = [];
+                $scope.errorMsg ='';
+                
+                $scope.getData= function()
+                {
+                    $scope.multiData = $http.get('https://jsonplaceholder.typicode.com/users')
+                    .then(function(response)
+                    {
+                        $scope.multiData = response.mul;
+                    },
+                    function(error){
+                        $scope.errorMsg = errorMsg.status;
+                    });
+                }
+            });
+    </script>
+</head>
+<body>
+        <div ng-controller="myCtrl">
+                <button ng-click="getData()">Get data</button>
+                 
+                <ul>
+                    <li ng-repeat="data in multiData">{{data.username}}</li>
+                </ul>
+
+                <p>{{errorMsg}}</p>
+                
+        </div>
+</body>
+</html>
