@@ -1,0 +1,33 @@
+<html ng-app="httpServiceDemo">
+<head>
+    <title>Http Service Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var appModule = angular.module("httpServiceDemo",[]);
+        appModule.controller("myCtrl",function($scope,$http){
+
+            $scope.data =[];
+
+            $scope.getData = function(){
+                $http.get("https://jsonplaceholder.typicode.com/users").then
+                (
+                    function(response){
+                        $scope.data = response.data;
+                    },
+                    function(error){
+                        $scope.error = status;
+                    }
+                );
+            }
+        });
+    </script>
+
+</head>
+<body>
+        <div ng-controller="myCtrl">
+                 <button ng-click="getData()">Get Data</button>
+                 <p ng-repeat="singleData in data">{{singleData.name}}</p>
+                 {{error}}
+        </div>
+</body>
+</html>
