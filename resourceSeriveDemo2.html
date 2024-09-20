@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="resourceService">
+<head> 
+    <title>Resource Service</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-resource.min.js"></script>
+    <script>
+        var myRootModule = angular.module("resourceService",["ngResource"]);
+        
+        myRootModule.controller("myCtrl",function($scope,$resource){
+            
+            $scope.data = [];
+            $scope.error ;
+
+            var myVar = $resource("https://jsonplaceholder.typicode.com/users"); 
+            $scope.getData = function()
+            {
+            
+                    myVar.query().$promise.then(
+                        function(response){
+                            $scope.data = response ;
+                        },
+                        function(error){
+                            $scope.erro = status;    
+                        });
+            }
+        });
+    </script>
+</head>
+<body>
+        <div ng-controller="myCtrl">
+            <button ng-click="getData()">Get Data</button>
+            <p ng-repeat="singleData in data" >{{singleData.name}}</p>
+            {{error}}
+        </div>
+</body>
+</html>
