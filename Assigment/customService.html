@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="customService_Yogesh">
+<head> 
+    <title>Custom Service</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <script>
+
+        var myVar = angular.module("customService_Yogesh",[]);
+
+       
+        myVar.service("mathService",function(){
+            this.add = function(a,b){
+                return  a + b;
+            }
+        });
+         
+        
+        myVar.controller("myCtrl",function($scope , mathService){
+            $scope.addNumber = function(){
+                $scope.result = mathService.add($scope.num1 , $scope.num2);
+            }
+        });
+        
+    </script>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        <p>Number 1: <input type="number" ng-model="num1"></p>
+        <p>Number 2: <input type="number" ng-model="num2"></p>
+        <button ng-click="addNumber()">Addition</button>
+
+        <p>Result : {{result}}</p>
+    </div>
+</body>
+</html>

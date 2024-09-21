@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="oneWay_Yogesh">
+<head> 
+    <title>One way data-binding</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+    <script>
+        var myVar = angular.module("oneWay_Yogesh",[]);
+        myVar.controller("myCtrl",function($scope){
+            $scope.name="Yogesh";
+            $scope.age=20;
+        });
+    </script>
+
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        <label>Your name is :{{name}}</label><br>
+        <label>Your age is : {{age}}</label>
+    </div>
+</body>
+</html>

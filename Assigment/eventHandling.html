@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="eventDemo_Yogesh">
+<head> 
+    <title>Event Handle</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var myVar = angular.module("eventDemo_Yogesh",[]);
+        myVar.controller("myCtrl",function($scope){
+            $scope.message = "";
+
+            $scope.click = function()
+            {
+                $scope.message="click on button";
+            };
+
+            $scope.dbclick = function()
+            {
+                $scope.message="double click on button";
+            };
+
+            $scope.over = function()
+            {
+                $scope.message="mouse over button";
+            };
+
+            $scope.leave = function()
+            {
+                $scope.message="mouse Leave";
+            };
+
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+         <h3>Event Handling</h3>
+
+         <button ng-click="click()" ng-dblClick="dbclick()" ng-mouseover="over()" ng-mouseleave="leave()">click me !</button>
+         {{message}}
+    </div>
+</body>
+</html>

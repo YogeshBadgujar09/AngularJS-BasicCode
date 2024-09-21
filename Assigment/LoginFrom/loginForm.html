@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="loginForm_Yogesh">
+<head>
+    <title>Login From</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+            var myVar = angular.module("loginForm_Yogesh",[]);
+            myVar.controller("myCtrl",function($scope){
+                
+                $scope.userName ;
+                $scope.password ;
+                $scope.callWelcomePage = false;
+                $scope.loginFailed = false;
+                $scope.loginFailedMsg ="Please enter valid username OR password";
+              
+
+                $scope.varifyFunction = function()
+                {
+                    if($scope.userName === "ADMIN" && $scope.password === "123"){
+                        $scope.callWelcomePage = !$scope.callWelcomePage
+                    }
+                    else{
+                        $scope.loginFailed = !$scope.loginFailed;
+                    }
+
+                };    
+            });
+    </script>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        
+            <form>
+
+            <label>Enter username :</label>
+            <input type="text" ng-model="userName"><br><br>
+    
+            <lable>Enter password :</lable>
+            <input type="text" ng-model="password"><br><br>
+    
+            <button ng-click="varifyFunction()">LOGIN</button>
+
+            <div ng-If="callWelcomePage">
+                <div ng-include="'welcomePage.html'"></div>
+            </div>
+
+            <div ng-If="loginFailed">
+              <p>{{loginFailedMsg}}</p>  
+            </div>
+
+        </form>
+        
+    </div>
+    
+    
+</body>
+</html>

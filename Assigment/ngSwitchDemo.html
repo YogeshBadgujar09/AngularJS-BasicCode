@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="ngSwitchDemo_Yogesh">
+<head> 
+    <title>ng-Switch</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var myVar = angular.module("ngSwitchDemo_Yogesh",[]);
+        myVar.controller("myCtrl",function($scope){
+
+                $scope.selectedItem='';
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+
+            <select ng-model="selectedItem">
+                    <option value="Apple">Apple</option>
+                    <option value="Banana">Banana</option>
+                    <option value="Graps">Graps</option>
+                    <option value="Mango">Mango</option>
+            </select>
+
+            <br><br>
+            
+            <div ng-switch="selectedItem">
+                <p ng-switch-when="Apple"> {{selectedItem}}</p>
+                <p ng-switch-when="Banana"> {{selectedItem}}</p>
+                <p ng-switch-when="Graps"> {{selectedItem}}</p>
+                <p ng-switch-when="Mango"> {{selectedItem}}</p>
+                <p ng-switch-default>Please select fruit </p>
+            </div>
+
+    </div>
+</body>
+</html>

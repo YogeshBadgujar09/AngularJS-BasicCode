@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="twoWay_Yogesh">
+<head> 
+    <title>Two Way data binding</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var myVar=angular.module("twoWay_Yogesh",[]);
+        myVar.controller("myCtrl",function($scope){
+
+            $scope.name='';
+            $scope.age='';
+
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        <label>Enter your name :</label>
+        <input type="text" ng-model="name"> 
+        <br><br>
+        <lable>Enter your age :</lable>
+        <input type="text" ng-model="age">
+
+        <br><br>
+        <label>Name : {{name}}</label><br>
+        <lable>age :  {{age}}</lable>
+    </div>
+</body>
+</html>
