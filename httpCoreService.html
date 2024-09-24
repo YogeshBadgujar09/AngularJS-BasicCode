@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html ng-app="httpService">
 <head>
     <title>Http Service</title>
@@ -9,37 +9,50 @@
         myApp.controller("myCtrl",function($scope,$http){
 
             $scope.array = [];
-            $scope.userId = ''  ;          ;
-            $scope.userName ='';
-            
+            $scope.userId   ;          
+            $scope.userName ;
+ 
             $scope.login = function()
             {
                $scope.array = $http.get('https://jsonplaceholder.typicode.com/users').then(
                     function(response)
                     {
                         $scope.array = response;
+                    
+                        // $scope.findUser = $scope.array.find( user => $scope.userId === user.id && $scope.userName === user.username);
 
-                        for(var i=0; i<array.length ; i++)
-                        {
-                            if( $scope.userId === response.id && $scope.userName === response.username){
-                                    document.write("Id match");
+                     //  $scope.findUser = $scope.array.findIndex(user => user.id === $scope.userId && user.username === $scope.userName);
+
+                       $scope.findUser = false ;
+
+                       for(var i=0 ; i< $scope.array.length ; i++)
+                       {
+                            if($scope.array[i].id === $scope.userId && $scope.array[i].username === $scope.userName )
+                            {
+                                console.log("User found" , $scope.findUser);
+                               // $scope.findUser = true;
                             }
-                            
-                        }
+                       }
+                         
+                        // if(!$scope.findUser)
+                        // {
+                        //     console.log("User Not found");
+                        // } else{
+                        //     console.log("User Found");
+                        // }
+
                     },
                     function(error)
                     {
                         $scope.error = "Not fetch data try again";
                     });
+
+                     
             }
         });
     </script>
 </head>
-<body>
-    <div>
-
-
-    </div>
+<body> 
 
     <div ng-controller="myCtrl">
 
@@ -48,7 +61,7 @@
 
         <button ng-click="login()">login</button>
 
-                <p ng-repeat="data in array">{{data.name}}</p><br>
+             <!-- <p ng-repeat="data in array">{{data.name}}</p><br> -->
 
         {{error}}
     </div>
