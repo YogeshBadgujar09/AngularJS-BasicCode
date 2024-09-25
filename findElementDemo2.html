@@ -1,0 +1,36 @@
+<html ng-app="myApp"></html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script>
+    // The JavaScript code for our AngularJS app
+      var app = angular.module('myApp', []);
+
+      app.controller('MyController', function($scope) {
+
+        $scope.findFun = function(){
+
+            var myArray = [{id: 1, name: 'John'}, {id: 2, name: 'Jane'}, {id: 3, name: 'Bob'}];
+            var foundElement;
+            
+            for (var i = 0; i < myArray.length; i++) {
+            
+                if (myArray[i].id === 2) 
+                {
+                    foundElement = myArray[i];
+                    break;
+                }
+            }
+
+            console.log(foundElement); // Output: {id: 2, name: 'Jane'}
+
+        }
+       
+    });
+
+    </script>
+
+  </head>
+  <body ng-controller="MyController">
+     <button ng-click="findFun()">find</button>
+  </body>
+</html>
