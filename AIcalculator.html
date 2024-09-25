@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="calculatorApp">
+<head>
+  <title>AngularJS Calculator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script>
+    angular.module('calculatorApp', [])
+      .controller('CalculatorController', function($scope) {
+        $scope.display = '';
+        $scope.click = function(button) {
+          if (button === '=') {
+            try {
+              $scope.display = eval($scope.display);
+            } catch (e) {
+              $scope.display = 'Error';
+            }
+          } else if (button === 'C') {
+            $scope.display = '';
+          } else {
+            $scope.display += button;
+          }
+        };
+      });
+  </script>
+</head>
+<body>
+  <div ng-controller="CalculatorController">
+    <h1>AngularJS Calculator</h1>
+    <input type="text" ng-model="display" readonly>
+    <table>
+      <tr>
+        <td><button ng-click="click('7')">7</button></td>
+        <td><button ng-click="click('8')">8</button></td>
+        <td><button ng-click="click('9')">9</button></td>
+        <td><button ng-click="click('/')">/</button></td>
+      </tr>
+      <tr>
+        <td><button ng-click="click('4')">4</button></td>
+        <td><button ng-click="click('5')">5</button></td>
+        <td><button ng-click="click('6')">6</button></td>
+        <td><button ng-click="click('*')">x</button></td>
+      </tr>
+      <tr>
+        <td><button ng-click="click('1')">1</button></td>
+        <td><button ng-click="click('2')">2</button></td>
+        <td><button ng-click="click('3')">3</button></td>
+        <td><button ng-click="click('-')">-</button></td>
+      </tr>
+      <tr>
+        <td><button ng-click="click('0')">0</button></td>
+        <td><button ng-click="click('.')">.</button></td>
+        <td><button ng-click="click('=')">=</button></td>
+        <td><button ng-click="click('+')">+</button></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
