@@ -1,0 +1,53 @@
+<html ng-app="httpCoreServiceDemo"></html>
+<head>
+    <title>Http Service Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var appModule = angular.module("httpCoreServiceDemo",[]);
+        appModule.controller("myCtrl",function($scope,$http){
+
+            $scope.array = [];
+            $scope.error = "";
+            $scope.inputId ;
+            $scope.inputUsername ;
+            $scope.flag = false ;
+            
+            $scope.confirm = function(){
+                $http.get("https://jsonplaceholder.typicode.com/users").then
+                (
+                    function(response){
+                        
+                        $scope.array = response;
+
+                        for(var i=0; i<$scope.array.data.length; i++)
+                        {
+                            if($scope.inputId == $scope.array.data[i].id && $scope.inputUsername == $scope.array.data[i].username)
+                            {
+                                console.log($scope.array.data[i].id + " " + $scope.array.data[i].username);
+                                $scope.flag = true ;
+                            }
+                        }                      
+
+                        if($scope.flag == false)
+                        {
+                            alert("please enter valid username or id");
+                        }
+  
+                    },
+                    function(error){
+                        $scope.error = "Data not fetch !!";
+                    }
+                );
+            }
+        });
+    </script>
+
+</head>
+<body>
+        <div ng-controller="myCtrl">
+            <label>Enter id : <input type="text" ng-model="inputId"></label>
+            <label>Enter username : <input type="text" ng-model="inputUsername"></label>
+            <button ng-click="confirm()">login</button>      
+        </div>
+</body>
+</html>
