@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="two-way-databinding">
+<head>
+    <title>Two way databinding Demo Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var myvar = angular.module("two-way-databinding",[]);
+        myvar.controller("myctrl",function($scope){
+                $scope.user_name="";
+            	$scope.password="";
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="myctrl">
+        Enter the UserName:
+           		 <input type="text" ng-model="user_name">
+        Enter the password:
+          		  <input type="text" ng-model="password">
+
+        <p>UserName= {{user_name}}</p>
+        <p>Password= {{password}}</p>
+    </div>
+</body>
+</html>
