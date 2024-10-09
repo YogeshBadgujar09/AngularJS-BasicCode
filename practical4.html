@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script>
+        var myApp = angular.module("app", []);
+        myApp.controller("controller", function ($scope) {
+            $scope.english = false;
+            $scope.hindi = false;
+            $scope.marathi = false;
+            $scope.evs = false;
+
+            $scope.getSelectedSubjects = function () {
+                var selectedSubjects = [];
+                if ($scope.english) console.log("english");
+                if ($scope.hindi) console.log("hindi");
+                if ($scope.marathi) console.log('Marathi');
+                if ($scope.evs) console.log('EVS');
+                return selectedSubjects;
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1 >Select Subjects</h1>
+    <div ng-app="app">
+        <div ng-controller="controller">
+            <form>
+                English: <input type="checkbox" ng-model="english">
+                <br>
+                Hindi: <input type="checkbox" ng-model="hindi">
+                <br>
+                Marathi: <input type="checkbox" ng-model="marathi">
+                <br>
+                EVS: <input type="checkbox" ng-model="evs">
+                <br>
+                <br>
+                <button ng-click="getSelectedSubjects()">Get Selected Subjects</button>
+            
+              
+            </form>
+        </div>
+    </div>
+</body>
+</html>
