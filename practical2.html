@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="login-form_Demo">
+<head>  
+    <title>login form Demo Program</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var myvar = angular.module("login-form_Demo",[]);
+        myvar.controller("myctrl",function($scope){
+
+            $scope.message="";
+            $scope.uservalidation="";
+            $scope.passwordvalidation="";
+            $scope.submit=function(){
+
+                if($scope.username===""){
+                    $scope.message="Please Enter the Username";
+                }
+                else if($scope.password===""){
+                    $scope.message="Please Enter the Password";
+                }
+                else if($scope.username==="Jayesh" && $scope.password==="1256"){
+                    $scope.message="Welcome Jayesh";
+                }
+                else{
+                    $scope.message="User Invalid !! ";
+                }
+            };
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="myctrl">
+
+        <h2> Login Form </h2>
+        <form ng-submit="submit()">
+            Enter the Username:
+                <input type="text" ng-model="username" ><br>
+                <p>{{uservalidation}}</p>
+
+            Enter the password:
+                <input type="text" ng-model="password" ><br>        
+                <p>{{passwordvalidation}}</p> 
+
+             <button type="submit"> Submit </button>  
+              <p>{{ message }}</p>
+            </form> 
+    </div>
+</body>
+</html>
