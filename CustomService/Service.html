@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+    <script>
+            var app = angular.module("app",[]);
+
+            app.service("Logger",function(){
+
+                this.log = function(msg)
+                {
+                    console.log(msg);
+                }
+
+                this.error = function(msg){
+                    console.error(msg);
+                }
+            }); 
+
+            app.controller("myCtrl",function(Logger){
+
+                Logger.log("HEllo");
+                Logger.error("Sorry");
+
+            });
+    </script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div ng-controller="myCtrl">
+
+    </div>
+    
+</body>
+</html>

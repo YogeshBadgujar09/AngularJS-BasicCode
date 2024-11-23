@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+    <script>
+            var app = angular.module("app",[]);
+
+            app.factory("mathFactory",function(){
+
+                var math = {};
+
+                math.add = function(a,b)
+                {
+                    return a + b;
+                }
+
+                math.sub = function(a,b)
+                {
+                        return a-b;
+                }
+
+                return math ;
+
+            });
+
+            app.controller("myCtrl",function($scope,mathFactory){
+
+                $scope.a = 10;
+                $scope.b = 10 ;
+
+                $scope.sum = mathFactory.add($scope.a , $scope.b);
+
+                console.log($scope.sum);
+
+            });
+
+
+    </script>
+
+    <title>Document</title>
+</head>
+<body>
+        <div ng-controller="myCtrl">
+
+        </div>
+</body>
+</html>
