@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+     <script>
+        var app = angular.module("app",[]);
+
+        app.controller("radioDemo",function($scope){
+            $scope.gender = "";
+ 
+        });
+     </script>
+    <title>Document</title>
+</head>
+<body>
+        <div ng-controller="radioDemo">
+                 <input type="radio" value="male" ng-model="gender">male
+                 <input type="radio" value="female" ng-model="gender">female
+                 {{gender}}
+        </div>   
+</body>
+</html>
