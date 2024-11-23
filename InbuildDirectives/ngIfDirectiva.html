@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+     
+    <script>
+        var app = angular.module("myApp",[]);
+
+        app.controller("myCtrl",function($scope){
+
+            $scope.flag = true ;
+
+            $scope.myFun = function()
+            {
+                $scope.visible = !scope.flag ;
+            }
+        });
+    </script>
+    <title>Document</title>
+</head>
+<body>
+ <div ng-controller="myCtrl">
+            <p ng-if="flag">This is sample</p>
+            <button ng-click="myFun">Buttom</button>
+ </div>
+</body>
+</html>
